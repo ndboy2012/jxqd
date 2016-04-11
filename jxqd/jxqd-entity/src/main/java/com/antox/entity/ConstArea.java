@@ -1,10 +1,9 @@
 package com.antox.entity;
 
 /**
- * @author 66(987927981@qq.com)<br>
- * @date 2016-01-05
  * 
- * @version 2.0
+ * @author yelp
+ *
  */
 public class ConstArea {
 
