@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.antox.service.IAreaService;
-
+/**
+ * 
+ * @author yelp
+ *
+ */
 @Controller("area")
 @RequestMapping("area")
 public class AreaController {
