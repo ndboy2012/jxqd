@@ -7,6 +7,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.antox.service.IAreaService;
 
+/**
+ * 
+ * @author Administrator
+ *
+ */
 @Controller("area")
 @RequestMapping("area")
 public class AreaController {
