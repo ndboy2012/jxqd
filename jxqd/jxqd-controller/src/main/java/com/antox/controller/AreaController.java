@@ -14,9 +14,6 @@ public class AreaController {
 	  @Autowired
 	  private IAreaService areaService;  
 	  
-	  
-	  
-	
 	  @RequestMapping("")
 	  public ModelAndView area() {
 		  ModelAndView mv = new ModelAndView("test");
