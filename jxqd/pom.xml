@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.antox</groupId>
+  <artifactId>jxqd</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+   <modules>
+    <module>jxqd-controller</module>
+    <module>jxqd-dao</module>
+    <module>jxqd-entity</module>
+    <module>jxqd-service</module>
+    <module>jxqd-web</module>
+  </modules>
+  
+  <name>jxqd</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <springframework.version>4.1.6.RELEASE</springframework.version>
+    <commons.logging.version>1.2</commons.logging.version>
+	<log4j.version>1.2.17</log4j.version>
+	<slf4j.version>1.7.12</slf4j.version>
+	<slf4j.log4j12.version>1.7.12</slf4j.log4j12.version>
+    <!-- mybatis -->
+	<mybatis.version>3.2.8</mybatis.version>
+	<mybatis.spring.version>1.2.2</mybatis.spring.version>
+	<!-- servlet -->
+	<servlet.api.version>3.1.0</servlet.api.version>
+	<!-- jstl -->
+	<jstl.version>1.2</jstl.version>
+	<!-- jsp.api -->
+	<jsp.api.version>2.0</jsp.api.version>
+	<!-- 构建项目相关 -->
+	<jdk.compiler.version>1.7</jdk.compiler.version>
+	<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
+	<maven.resources.plugin.version>2.6</maven.resources.plugin.version>
+    <!-- mysql -->
+	<mysql.connector.java.version>5.1.35</mysql.connector.java.version>
+	<maven-war-plugin.version>2.1.1</maven-war-plugin.version>
+	
+	<druid.version>1.0.13</druid.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- 日志相关 -->
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+	  <version>${commons.logging.version}</version>
+    </dependency>
+    <dependency>
+	  <groupId>log4j</groupId>
+	  <artifactId>log4j</artifactId>
+	  <version>${log4j.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>${slf4j.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+		<version>${slf4j.log4j12.version}</version>
+	</dependency>
+	<!-- mybatis相关 -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis</artifactId>
+		<version>${mybatis.version}</version>
+	</dependency>
+	<!-- mybatis-spring连接 -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis-spring</artifactId>
+		<version>${mybatis.spring.version}</version>
+	</dependency>
+	<!-- spring相关 -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>${springframework.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-beans</artifactId>
+		<version>${springframework.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-expression</artifactId>
+		<version>${springframework.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${springframework.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${springframework.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>${springframework.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>${springframework.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<version>${springframework.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aop</artifactId>
+		<version>${springframework.version}</version>
+	</dependency>
+	<!-- <scope>provided</scope> -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>${servlet.api.version}</version>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+		<version>${jstl.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jsp-api</artifactId>
+		<version>${jsp.api.version}</version>
+		<scope>provided</scope>
+	</dependency>
+	
+	<!-- 阿里巴巴数据库连接池 -->
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>druid</artifactId>
+		<version>${druid.version}</version>
+		<exclusions>
+			<exclusion>
+				<groupId>com.alibaba</groupId>
+				<artifactId>jconsole</artifactId>
+			</exclusion>
+			<exclusion>
+				<groupId>com.alibaba</groupId>
+				<artifactId>tools</artifactId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+	
+	<!-- mysql连接 -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>${mysql.connector.java.version}</version>
+	</dependency>
+			
+  </dependencies>
+  
+  <build>
+		<plugins>
+			<!-- 编译插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${jdk.compiler.version}</source>
+					<target>${jdk.compiler.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<!-- 资源插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<warName>jxqd-web</warName>
+					<version>3.1</version>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+ 
+</project>

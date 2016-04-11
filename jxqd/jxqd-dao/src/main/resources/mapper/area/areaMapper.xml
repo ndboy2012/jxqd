@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.antox.dao.IAreaDao">
+	<sql id="colums">
+		id,
+		area_name,
+		short_name,
+		rank,
+		pinyin,
+		py,
+		parent_id,
+		level,
+		alias,
+		latitude,
+		longitude,
+		area_code,
+		zip_code,
+		sort_no,
+		state
+	</sql>
+	
+	<select id="queryAllArea" resultMap="areaResultMapper">
+	   select 
+	   <include refid="colums" />
+	   from ds_const_area
+	</select>
+
+	<resultMap type="com.antox.entity.ConstArea" id="areaResultMapper">
+		<id property="id" column="id" javaType="java.lang.Integer"
+			jdbcType="INTEGER" />
+		<result property="areaName" column="area_name" javaType="java.lang.String"
+			jdbcType="VARCHAR" />
+		<result property="shortName" column="short_name" javaType="java.lang.String"
+			jdbcType="VARCHAR" />
+		<result property="rank" column="rank" javaType="java.lang.String"
+			jdbcType="VARCHAR" />
+		<result property="pinyin" column="pinyin" javaType="java.lang.String"
+			jdbcType="VARCHAR" />
+		<result property="py" column="py" javaType="java.lang.String"
+			jdbcType="VARCHAR" />
+		<result property="parentId" column="parent_id" javaType="java.lang.Integer"
+			jdbcType="INTEGER" />
+		<result property="level" column="level" javaType="java.lang.Integer"
+			jdbcType="INTEGER" />
+		<result property="alias" column="alias" javaType="java.lang.String"
+			jdbcType="VARCHAR" />
+		<result property="latitude" column="latitude" javaType="java.lang.Double"
+			jdbcType="DOUBLE" />
+		<result property="longitude" column="longitude" javaType="java.lang.Double"
+			jdbcType="DOUBLE" />
+		<result property="areaCode" column="area_code" javaType="java.lang.String"
+			jdbcType="VARCHAR" />
+		<result property="zipCode" column="zip_code" javaType="java.lang.String"
+			jdbcType="VARCHAR" />
+		<result property="sortNo" column="sort_no" javaType="java.lang.Integer"
+			jdbcType="INTEGER" />
+		<result property="state" column="state" javaType="java.lang.Integer"
+			jdbcType="INTEGER" />
+	</resultMap>
+</mapper>
