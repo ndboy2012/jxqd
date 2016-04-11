@@ -28,5 +28,6 @@ public class AreaController {
 	  public void show() {
 		  System.out.println("hello");
 		  System.out.println("hello2");
+		  System.out.println("hello3");
 	  }
 }
