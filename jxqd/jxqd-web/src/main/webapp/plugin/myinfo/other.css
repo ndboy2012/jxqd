@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*我的主页*/
+
+.account_right  .top{ height:170px; width:99.5%; margin-bottom:20px;  border:1px solid #eee;}
+.account_right  .top  .user_male{ width:145px; height:145px; margin:10px 20px; border-radius:50%; float:left;}
+.account_right  .top  .user_male img{width:145px; height:145px;border-radius:50%; float:left; border:1px solid #eee;}
+.account_right  .top  .position{ background-position:-2px 12px;}
+.account_right  .top  .message{width:425px; height:145px; margin:15px 20px;float: left;  }
+h5{  line-height:2.1; color: #050303; display:inline-block; font-size:14px; font-weight:normal;}
+.account_right  .tab_frame{ min-height:280px; width:100%; margin-bottom:10px; }
+/*我的主页-详情*/
+ .tips{ cursor:pointer;}
+  .prompt{ height:35px; width:100px; background-color:#fffbe9; border:1px solid #FBF3D1; position: absolute;display:none;
+left:74%;}
+ .prompt span{ padding-left:5.1px; padding-right:7.34px; }
+.category-1 table,.category-2  table{width:100%;empty-cells:show;background-color:transparent;border-collapse:collapse;border-spacing:0; margin-top:15px; z-index:999;table-layout: fixed; margin-bottom:20px;}
+
+
+.border_out{ border:1px  dashed #cc0000; width:90%; margin-left:5%; padding-top:3%; margin-bottom:5%;}
+/*实名认证*/
+.account_right_special   .big_special{ width:99%; min-height:480px;border-right:1px solid #eee; padding-top:20px; border-bottom:1px solid #eee;}
+.identification_big{ width:100%; min-height:480px;border-left:1px solid #eee; margin-bottom:20px;}
+ h4{ line-height:4.1; color: #F10A2D; font-size:18px;  text-align:center;}
+ .attention{ font-size:11px;}
+ .student_box{ height: auto; width:100%; display:none;}
+ .gobd  a{ line-height:3.1; }
+ .form{ height:40px;width:120px;}
+ #message{ cursor:pointer;}
+/*我的消息*/
+ .complain_special {height:25px; width:278px; float:right; padding-right:20px;padding-top:10px;}
+ .complain_special_doc {height:25px; width:278px; float:right; padding-right:20px;}
+ .complain_special_doc .input_text{width:150px; height:30px; border:1px solid #eee;}
+ .complain_special_doc .but{width:60px; height:30px; color:#fff; background-color:#F8373B; border:0; cursor:pointer;}
+ .complain_special a, .complain_special a:hover{ float:right; color:#000; }
+ .message_prompt{height:95px; width:500px; background-color:#fffbe9; border:1px solid #FBF3D1; position: absolute;display:none;left:40%; white-space: normal; text-align:left; padding-left:1%; padding-right:1%;}
+ .message_prompt span{ padding-left:5.1px; padding-right:7.34px; }
+/*我的收藏*/
+ .all_dele {height:25px; width:128px; float:right; padding-right:20px;padding-top:10px;}
+ .all_dele a, .all_dele a:hover{ float:right; color:#000; }
+/*个人设置*/
+ .editor{ background-color:#F10A2D; text-align:center; width:90px; margin-top:7px; float:right; height:30px; border-radius:5px; cursor:pointer;
+ line-height:2.1; }
+ .editor a,.editor a:hover{ color:#fff; display:block;}
+ .install_change{ float: right; height:480px; width:960px;  padding-right:20px; }
+  .install_change  .change_image{width:100%; min-height:430px; border:1px solid #eee;padding-top:50px; }
+ .showtime{ height:250px; width:250px;}
+ .showtime img{width:"100%";height:"100%"}
+
+/*投诉*/
+.complain{ height:220px; width:280px;}
+.complain_big{ width:100%; min-height:480px;border:1px solid #eee; padding-top:20px;  }
