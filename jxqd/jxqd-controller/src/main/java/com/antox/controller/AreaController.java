@@ -22,6 +22,7 @@ public class AreaController {
 	  public ModelAndView area() {
 		  ModelAndView mv = new ModelAndView("test");
 		  System.out.println(areaService.queryAllArea().size());
+		  
 		  return mv;
 	  }
 }
