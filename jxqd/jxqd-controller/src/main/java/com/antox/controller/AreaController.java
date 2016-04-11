@@ -24,10 +24,4 @@ public class AreaController {
 		  System.out.println(areaService.queryAllArea().size());
 		  return mv;
 	  }
-	  
-	  public void show() {
-		  System.out.println("hello");
-		  System.out.println("hello2");
-		  System.out.println("hello3");
-	  }
 }
