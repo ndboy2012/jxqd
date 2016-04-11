@@ -8,7 +8,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
  * 
- * @author yelp
+ * @author ttt
  *
  */
 public class AuthInterceptor extends HandlerInterceptorAdapter {
