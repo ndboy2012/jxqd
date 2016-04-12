@@ -9,5 +9,9 @@ public class Student implements InitializingBean {
 		// TODO Auto-generated method stub
 		System.out.println("ceshi InitializingBean");
 	}
+	
+	public void testInit(){
+        System.out.println("ceshi init-method");        
+    }
 
 }
