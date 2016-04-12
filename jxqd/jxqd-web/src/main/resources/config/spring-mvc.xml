@@ -11,6 +11,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+		
 	<context:annotation-config />
 	<context:component-scan base-package="com.antox">
 		<context:include-filter type="annotation"
@@ -29,6 +30,16 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
+	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone= 
+		"GMT+8") -->
+	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	
 	<!-- 对于controller注解进行拦截 访问到requestMapping时将进行拦截设置  -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
 	   <property name="interceptors">
@@ -41,6 +52,11 @@
 	<!-- 启动springMvc注解功能 -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 	  <property name="cacheSeconds" value="0" />
+	  <property name="messageConverters">
+	     <list>
+	       <ref bean="mappingJacksonHttpMessageConverter"/>
+	     </list>
+	  </property>
 	</bean>
 	
 </beans>

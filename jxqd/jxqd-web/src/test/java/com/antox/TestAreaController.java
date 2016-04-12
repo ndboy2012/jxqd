@@ -10,7 +10,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Log4jConfigurer;
 
+import com.alibaba.fastjson.JSON;
+import com.antox.entity.ConstArea;
 import com.antox.service.IAreaService;
+import com.antox.utils.AjaxJson;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:config/spring-context.xml"})
@@ -31,8 +34,17 @@ public class TestAreaController {
 
 	@Test
 	public void testArea() {
-		logger.debug("hello");
-	    logger.info(areaService.queryAllArea().size());
+	    //logger.info(JSON.toJSONString(areaService.queryAllArea()));
+	}
+	
+	@Test
+	public void testJson() {
+		ConstArea ca = areaService.queryAreaByName("合肥市");
+		AjaxJson j = new AjaxJson();
+		j.setSuccess(true);
+		j.setMsg("hello");
+		j.setResult(ca);
+		logger.info(JSON.toJSONString(j));
 	}
 
 }

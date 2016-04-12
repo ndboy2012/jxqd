@@ -20,4 +20,9 @@ public class AreaService implements IAreaService {
 		return areaDao.queryAllArea();
 	}
 
+	@Override
+	public ConstArea queryAreaByName(String name) {
+		return areaDao.queryAreaByName(name);
+	}
+
 }
