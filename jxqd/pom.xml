@@ -46,6 +46,7 @@
     <fastjson.version>1.2.5</fastjson.version>
 	<jackson.version>2.5.2</jackson.version>
 	<json.version>20140107</json.version>
+	<bouncycastle.version>1.54</bouncycastle.version>
   </properties>
 
   <dependencies>
@@ -201,7 +202,14 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
       <version>${jackson.version}</version>
-   </dependency>	
+   </dependency>
+   
+   <!-- rsa -->	
+   <dependency>
+		<groupId>org.bouncycastle</groupId>
+		<artifactId>bcprov-jdk15on</artifactId>
+		<version>${bouncycastle.version}</version>
+  </dependency>
   </dependencies>
   
   <build>
