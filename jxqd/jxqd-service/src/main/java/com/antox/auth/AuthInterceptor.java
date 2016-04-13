@@ -25,7 +25,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		HandlerMethod handlerMethod = (HandlerMethod) handler;
 		Method method = handlerMethod.getMethod();
 	    if(method.isAnnotationPresent(MyAnnotation.class)) {
-	       MyAnnotation anc =	method.getAnnotation(MyAnnotation.class);
+	       MyAnnotation anc = method.getAnnotation(MyAnnotation.class);
 	       System.out.println(anc.description());
 	    }
 		return true;

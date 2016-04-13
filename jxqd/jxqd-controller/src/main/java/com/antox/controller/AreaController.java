@@ -32,12 +32,14 @@ public class AreaController {
 	  @RequestMapping("name")
 	  @ResponseBody
 	  @MyAnnotation(description="这个是CCC")
-	  public AjaxJson requestAreaInfo() {
-		    ConstArea ca = areaService.queryAreaByName("合肥市");
-			AjaxJson j = new AjaxJson();
+	  public AjaxJson requestAreaInfo(String type) {
+		   AjaxJson j = new AjaxJson();
+		    /*ConstArea ca = areaService.queryAreaByName("合肥市");
 			j.setSuccess(true);
 			j.setMsg("hello");
 			j.setResult(ca);
+			System.out.println(type);*/
+		    j.setResult(areaService.queryAllArea());
 			return j;
 	  }
 }

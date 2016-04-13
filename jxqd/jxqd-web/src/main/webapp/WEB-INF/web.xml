@@ -59,6 +59,15 @@
 		<servlet-name>springMvc</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
-  
+    
+    <!-- 验证码生成的servlet -->
+	<servlet>
+	  <servlet-name>RandCodeImage</servlet-name>
+	  <servlet-class>com.antox.validatecode.RandCodeImageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>RandCodeImage</servlet-name>
+	  <url-pattern>/randCodeImage</url-pattern>
+	</servlet-mapping>  
+	  
 </web-app>
