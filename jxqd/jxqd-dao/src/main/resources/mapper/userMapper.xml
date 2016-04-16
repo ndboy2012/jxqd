@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.antox.dao.IUserDao">
+
+	<!-- 列定义 -->
+	<sql id="columns">
+		id,
+		login_id,
+		email,
+		mobile,
+		reg_date,
+		reg_ipv4,
+		seed,
+		hash,
+		account_id,
+		name,
+		birth_year,
+		birth_month,
+		birth_day,
+		birthday,
+		gender,
+		vip,
+		pinyin,
+		py,
+		nick,
+		header,
+		settings,
+		device_id,
+		client_key,
+		sales,
+		citizen_code,
+		citizen_image,
+		qq,
+		weixin,
+		weibo,
+		student,
+		realname,
+		realstudent,
+		last_login,
+		state
+	</sql>
+
+
+	<sql id="wheres">
+		<where>
+			<if test="param.email!=null">
+				email = #{param.email,jdbcType=VARCHAR}
+			</if>
+			<if test="param.mobile!=null">
+				AND mobile = #{param.mobile,jdbcType=VARCHAR}
+			</if>
+			<if test="param.name!=null">
+				AND name like #{param.name,jdbcType=VARCHAR}
+			</if>
+			<if test="param.birthYear!=null">
+				AND birth_year = #{param.birthYear,jdbcType=SMALLINT}
+			</if>
+			<if test="param.birthMonth!=null">
+				AND birth_month = #{param.birthMonth,jdbcType=TINYINT}
+			</if>
+			<if test="param.birthDay!=null">
+				AND birth_day = #{param.birthDay,jdbcType=TINYINT}
+			</if>
+			<if test="param.gender!=null">
+				AND gender = #{param.gender,jdbcType=TINYINT}
+			</if>
+			<if test="param.vip!=null">
+				AND vip = #{param.vip,jdbcType=TINYINT}
+			</if>
+			<if test="param.nick!=null">
+				AND nick like #{param.nick,jdbcType=VARCHAR}
+			</if>
+			<if test="param.state!=null">
+				AND state = #{param.state,jdbcType=INTEGER}
+			</if>
+
+			<if test="param.regStart!=null">
+				and reg_date >=#{param.regStart,jdbcType=TIMESTAMP}
+			</if>
+
+			<if test="param.regEnd!=null">
+				and reg_date &lt;= #{param.regEnd,jdbcType=TIMESTAMP}
+			</if>
+
+			<if test="param.birthStart!=null">
+				and birthday >=#{param.birthStart,jdbcType=TIMESTAMP}
+			</if>
+
+			<if test="param.birthEnd!=null">
+				and birthday &lt;= #{param.birthEnd,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</sql>
+
+
+	<sql id="whereFilter">
+		<where>
+			<if test="param.email!=null">
+				email = #{param.email,jdbcType=VARCHAR}
+			</if>
+			<if test="param.mobile!=null">
+				AND mobile = #{param.mobile,jdbcType=VARCHAR}
+			</if>
+			<if test="param.name!=null">
+				AND name like #{param.name,jdbcType=VARCHAR}
+			</if>
+			<if test="param.gender!=null">
+				AND gender = #{param.gender,jdbcType=TINYINT}
+			</if>
+			<if test="param.nick!=null">
+				AND nick like #{param.nick,jdbcType=VARCHAR}
+			</if>
+			<if test="param.state!=null">
+				AND state = #{param.state,jdbcType=INTEGER}
+			</if>
+			<if test="param.regStart!=null">
+				and reg_date >=#{param.regStart,jdbcType=TIMESTAMP}
+			</if>
+			<if test="param.regEnd!=null">
+				and reg_date &lt;= #{param.regEnd,jdbcType=TIMESTAMP}
+			</if>
+			AND state IN
+			<foreach collection="stateArr" item="item" open="(" close=")"
+				separator=",">
+				#{item}
+			</foreach>
+		</where>
+	</sql>
+
+
+	<!-- 插入 -->
+	<insert id="save" parameterType="com.antox.entity.User">
+		<selectKey resultType="String" keyProperty="id" order="BEFORE">
+			select concat(uuid_short(),'') as id
+		</selectKey>
+		insert into ds_user(
+		id,
+		login_id,
+		email,
+		mobile,
+		reg_date,
+		reg_ipv4,
+		seed,
+		hash,
+		account_id,
+		name,
+		birth_year,
+		birth_month,
+		birth_day,
+		birthday,
+		gender,
+		vip,
+		pinyin,
+		py,
+		nick,
+		header,
+		settings,
+		device_id,
+		client_key,
+		sales,
+		citizen_code,
+		citizen_image,
+		qq,
+		weixin,
+		weibo,
+		student,
+		realname,
+		realstudent,
+		last_login,
+		state)
+		values(
+		#{id,jdbcType=BIGINT},
+		#{loginId,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR},
+		#{mobile,jdbcType=VARCHAR},
+		#{regDate,jdbcType=TIMESTAMP},
+		#{regIpv4,jdbcType=VARCHAR},
+		#{seed,jdbcType=VARCHAR},
+		#{hash,jdbcType=VARCHAR},
+		#{accountId,jdbcType=BIGINT},
+		#{name,jdbcType=VARCHAR},
+		#{birthYear,jdbcType=SMALLINT},
+		#{birthMonth,jdbcType=TINYINT},
+		#{birthDay,jdbcType=TINYINT},
+		#{birthday,jdbcType=TIMESTAMP},
+		#{gender,jdbcType=TINYINT},
+		#{vip,jdbcType=TINYINT},
+		#{pinyin,jdbcType=VARCHAR},
+		#{py,jdbcType=VARCHAR},
+		#{nick,jdbcType=VARCHAR},
+		#{header,jdbcType=VARCHAR},
+		#{settings,jdbcType=VARCHAR},
+		#{deviceId,jdbcType=VARCHAR},
+		#{clientKey,jdbcType=VARCHAR},
+		#{sales,jdbcType=VARCHAR},
+		#{citizenCode,jdbcType=VARCHAR},
+		#{citizenImage,jdbcType=VARCHAR},
+		#{qq,jdbcType=VARCHAR},
+		#{weixin,jdbcType=VARCHAR},
+		#{weibo,jdbcType=VARCHAR},
+		#{student,jdbcType=TINYINT},
+		#{realname,jdbcType=TINYINT},
+		#{realstudent,jdbcType=TINYINT},
+		#{lastLogin,jdbcType=TIMESTAMP},
+		#{state,jdbcType=INTEGER})
+	</insert>
+
+	<!--删除定义 -->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from  ds_user WHERE id = #{id,jdbcType=BIGINT}
+	</delete>
+	
+	<select id="queryUserByLoginIdAndState" resultMap="userResultMap">
+		select
+		<include refid="columns" />
+		from ds_user
+		<where>
+			<if test="loginId!=null">
+				login_id = #{loginId,jdbcType=VARCHAR}
+			</if>
+			<if test="state!=null">
+				state = #{state,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 通过loginId来获取用户信息,登入时候使用 -->
+	<select id="queryUserByLoginId" resultMap="userResultMap">
+		select
+		<include refid="columns" />
+		from ds_user
+		where login_id = #{loginId,jdbcType=VARCHAR} or
+		mobile =
+		#{loginId,jdbcType=VARCHAR} or
+		email = #{loginId,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 更新通过主键 -->
+	<update id="updateByPrimaryKey" parameterType="com.antox.entity.User">
+		update ds_user
+		<set>
+			<if test="loginId!=null">
+				login_id=#{loginId,jdbcType=VARCHAR},
+			</if>
+			<if test="email!=null">
+				email=#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="mobile!=null">
+				mobile=#{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="regDate!=null">
+				reg_date=#{regDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="regIpv4!=null">
+				reg_ipv4=#{regIpv4,jdbcType=VARCHAR},
+			</if>
+			<if test="seed!=null">
+				seed=#{seed,jdbcType=VARCHAR},
+			</if>
+			<if test="hash!=null">
+				hash=#{hash,jdbcType=VARCHAR},
+			</if>
+			<if test="accountId!=null">
+				account_id=#{accountId,jdbcType=BIGINT},
+			</if>
+			<if test="name!=null">
+				name=#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="birthYear!=null">
+				birth_year=#{birthYear,jdbcType=SMALLINT},
+			</if>
+			<if test="birthMonth!=null">
+				birth_month=#{birthMonth,jdbcType=TINYINT},
+			</if>
+			<if test="birthDay!=null">
+				birth_day=#{birthDay,jdbcType=TINYINT},
+			</if>
+			<if test="birthday!=null">
+				birthday=#{birthday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gender!=null">
+				gender=#{gender,jdbcType=TINYINT},
+			</if>
+			<if test="vip!=null">
+				vip=#{vip,jdbcType=TINYINT},
+			</if>
+			<if test="pinyin!=null">
+				pinyin=#{pinyin,jdbcType=VARCHAR},
+			</if>
+			<if test="py!=null">
+				py=#{py,jdbcType=VARCHAR},
+			</if>
+			<if test="nick!=null">
+				nick=#{nick,jdbcType=VARCHAR},
+			</if>
+			<if test="header!=null">
+				header=#{header,jdbcType=VARCHAR},
+			</if>
+			<if test="settings!=null">
+				settings=#{settings,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceId!=null">
+				device_id=#{deviceId,jdbcType=VARCHAR},
+			</if>
+			<if test="clientKey!=null">
+				client_key=#{clientKey,jdbcType=VARCHAR},
+			</if>
+			<if test="sales!=null">
+				sales=#{sales,jdbcType=VARCHAR},
+			</if>
+			<if test="citizenCode!=null">
+				citizen_code=#{citizenCode,jdbcType=VARCHAR},
+			</if>
+			<if test="citizenImage!=null">
+				citizen_image=#{citizenImage,jdbcType=VARCHAR},
+			</if>
+			<if test="qq!=null">
+				qq=#{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="weixin!=null">
+				weixin=#{weixin,jdbcType=VARCHAR},
+			</if>
+			<if test="weibo!=null">
+				weibo=#{weibo,jdbcType=VARCHAR},
+			</if>
+			<if test="student!=null">
+				student=#{student,jdbcType=TINYINT},
+			</if>
+			<if test="realname!=null">
+				realname=#{realname,jdbcType=TINYINT},
+			</if>
+			<if test="realstudent!=null">
+				realstudent=#{realstudent,jdbcType=TINYINT},
+			</if>
+			<if test="state!=null">
+				last_login=#{lastLogin,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state!=null">
+				state=#{state,jdbcType=INTEGER},
+			</if>
+		</set>
+		where	id =#{id,jdbcType=BIGINT}
+	</update>
+
+	<!-- 数据库列与对象属性映射 -->
+	<resultMap type="com.antox.entity.User" id="userResultMap">
+		<id property="id" column="id" javaType="java.lang.String" jdbcType="BIGINT" />
+		<result property="loginId" column="login_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result property="email" column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result property="mobile" column="mobile" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result property="regDate" column="reg_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+		<result property="regIpv4" column="reg_ipv4" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result property="seed" column="seed" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result property="hash" column="hash" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result property="accountId" column="account_id" javaType="java.lang.String" jdbcType="BIGINT" />
+		<result property="name" column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result property="birthYear" column="birth_year" javaType="java.lang.Integer" jdbcType="SMALLINT" />
+		<result property="birthMonth" column="birth_month" javaType="java.lang.Integer" 	jdbcType="TINYINT" />
+		<result property="birthDay" column="birth_day" javaType="java.lang.Integer" jdbcType="TINYINT" />
+		<result property="birthday" column="birthday" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+		<result property="gender" column="gender" javaType="java.lang.Integer" jdbcType="TINYINT" />
+		<result property="vip" column="vip" javaType="java.lang.Integer" jdbcType="TINYINT" />
+		<result property="pinyin" column="pinyin" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result property="py" column="py" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result property="nick" column="nick" javaType="java.lang.String"	jdbcType="VARCHAR" />
+		<result property="header" column="header" javaType="java.lang.String"	jdbcType="VARCHAR" />
+		<result property="settings" column="settings" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result property="deviceId" column="device_id" javaType="java.lang.String"	jdbcType="VARCHAR" />
+		<result property="clientKey" column="client_key" javaType="java.lang.String"	jdbcType="VARCHAR" />
+		<result property="sales" column="sales" javaType="java.lang.String"	jdbcType="VARCHAR" />
+		<result property="citizenCode" column="citizen_code" javaType="java.lang.String"	jdbcType="VARCHAR" />
+		<result property="citizenImage" column="citizen_image"	javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result property="qq" column="qq" javaType="java.lang.String"	jdbcType="VARCHAR" />
+		<result property="weixin" column="weixin" javaType="java.lang.String"	jdbcType="VARCHAR" />
+		<result property="weibo" column="weibo" javaType="java.lang.String"	jdbcType="VARCHAR" />
+		<result property="student" column="student" javaType="java.lang.Integer"	jdbcType="TINYINT" />
+		<result property="realname" column="realname" javaType="java.lang.Integer"	jdbcType="TINYINT" />
+		<result property="realstudent" column="realstudent" javaType="java.lang.Integer"	jdbcType="TINYINT" />
+		<result property="lastLogin" column="last_login" javaType="java.lang.Integer"	jdbcType="TINYINT" />
+		<result property="state" column="state" javaType="java.lang.Integer"	jdbcType="INTEGER" />
+	</resultMap>
+</mapper>

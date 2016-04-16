@@ -34,9 +34,8 @@
 			}
 			
 		     var loginId = $("#loginId").val();
-		     loginId = doRSAEncrypt(loginId);
 		     $.ajax({
-		    	 url:"${webRoot}/login/loginId",
+		    	 url:"${webRoot}/my/loginId",
 		    	 type:"post",
 		    	 dataType:"json",
 		    	 data :{
@@ -45,23 +44,23 @@
 		    	 success:function(data) {
 		    		 if(data.success) {
 		    			loginId = data.result;
-		    			var lid=doRSAEncrypt(loginId);
+		    			var lid=loginId;
 						var password=$("#password").val();
 						var pwd=loginId+password;
 						pwd=doRSAEncrypt($.md5(pwd));
 						var validateCode=$("#validateCode").val();
 						$.ajax({
-							url:"${webRoot}/login/loginIn",
+							url:"${webRoot}/my/loginIn",
 							type:"POST",
 							dataType:"json",
 							data:{
-									 "vcode":validateCode,
-									 "hash":pwd,
-									 "lid":lid
-								},
+								 "vcode":validateCode,
+								 "hash":pwd,
+								 "lid":lid
+							},
 							success:function(data){
 								if(data.success){
-									window.location = "${webRoot}/";
+									layer.alert(data.msg);
 								}else{
 									$("#refreshImg").click();
 							 		$("#password").focus();

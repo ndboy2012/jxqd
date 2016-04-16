@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.antox.annotation.MyAnnotation;
-import com.antox.entity.ConstArea;
 import com.antox.service.IAreaService;
 import com.antox.utils.AjaxJson;
 /**
