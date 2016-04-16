@@ -13,5 +13,7 @@ public interface IAreaDao {
      public List<ConstArea> queryAllArea();
      
      public ConstArea queryAreaByName(@Param("name")String name);
+     
+     public List<ConstArea> queryAreasByParentId(@Param("parentId")Integer parentId);
     
 }

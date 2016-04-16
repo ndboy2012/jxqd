@@ -35,6 +35,17 @@
 	      </if>
 	   </where>
 	</select>
+	
+	<select id="queryAreasByParentId" resultMap="areaResultMapper">
+	    SELECT 
+	   <include refid="colums" />
+	   FROM ds_const_area
+	   <where>
+	      <if test="parentId!=null">
+	         parent_id = #{parentId,jdbcType=INTEGER}
+	      </if>
+	   </where>
+	</select>
 
 	<resultMap type="com.antox.entity.ConstArea" id="areaResultMapper">
 		<id property="id" column="id" javaType="java.lang.Integer"
