@@ -15,7 +15,6 @@ public class InitListener implements javax.servlet.ServletContextListener{
 	
 	private Logger logger = Logger.getLogger(InitListener.class);
 	
-
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		

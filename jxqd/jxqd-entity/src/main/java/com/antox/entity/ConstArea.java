@@ -1,11 +1,13 @@
 package com.antox.entity;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author yelp
  *
  */
-public class ConstArea {
+public class ConstArea implements Serializable{
 
 	/** 自动编号，行政区域的编号，非自增值。 */
 	private java.lang.Integer id;

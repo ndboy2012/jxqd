@@ -15,6 +15,6 @@
    
    <bean id="student" class="com.antox.initliaze.Student" init-method="testInit"></bean>
    <context:property-placeholder location="classpath:properties/*.properties" />
+   <import resource="classpath*:config/spring-ehcache.xml"/>
    <import resource="classpath*:config/spring-mybatis.xml"/>
-   
 </beans>

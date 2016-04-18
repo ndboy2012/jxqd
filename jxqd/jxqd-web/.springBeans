@@ -9,6 +9,8 @@
 	<configs>
 		<config>src/main/resources/config/spring-mybatis.xml</config>
 		<config>src/main/resources/config/spring-context.xml</config>
+		<config>src/main/resources/config/spring-ehcache.xml</config>
+		<config>src/main/resources/config/ehcache.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/resources/config/spring-mvc.xml</config>

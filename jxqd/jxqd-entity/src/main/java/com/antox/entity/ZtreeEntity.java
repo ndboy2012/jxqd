@@ -1,8 +1,9 @@
 package com.antox.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ZtreeEntity {
+public class ZtreeEntity implements Serializable{
    
 	private String name;
 	 

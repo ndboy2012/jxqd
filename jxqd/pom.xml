@@ -135,6 +135,11 @@
 		<artifactId>spring-aop</artifactId>
 		<version>${springframework.version}</version>
 	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+		<version>${springframework.version}</version>
+    </dependency>
 	<!-- <scope>provided</scope> -->
 	<dependency>
 		<groupId>javax.servlet</groupId>
@@ -203,13 +208,18 @@
       <artifactId>jackson-annotations</artifactId>
       <version>${jackson.version}</version>
    </dependency>
-   
    <!-- rsa -->	
    <dependency>
 		<groupId>org.bouncycastle</groupId>
 		<artifactId>bcprov-jdk15on</artifactId>
 		<version>${bouncycastle.version}</version>
   </dependency>
+  <dependency>
+	<groupId>net.sf.ehcache</groupId>
+	<artifactId>ehcache-core</artifactId>
+	<version>2.6.11</version>
+  </dependency>
+  
   </dependencies>
   
   <build>
