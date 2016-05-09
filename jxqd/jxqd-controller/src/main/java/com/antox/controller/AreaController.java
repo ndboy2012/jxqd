@@ -1,5 +1,6 @@
 package com.antox.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,8 @@ import com.antox.utils.AjaxJson;
 @Controller("area")
 @RequestMapping("area")
 public class AreaController {
-       
+      
+	  private Logger logger = Logger.getLogger(AreaController.class);
 	  @Autowired
 	  private IAreaService areaService;  
 	  
@@ -38,6 +40,7 @@ public class AreaController {
 			j.setMsg("hello");
 			j.setResult(ca);
 			System.out.println(type);*/
+		    logger.info("requestAreaInfo");
 		    j.setResult(areaService.queryAllArea());
 			return j;
 	  }
