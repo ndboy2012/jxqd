@@ -38,7 +38,6 @@ public class AreaController {
 		    /*ConstArea ca = areaService.queryAreaByName("合肥市");
 			j.setSuccess(true);
 			j.setMsg("hello");
-			j.setResult(ca);
 			System.out.println(type);*/
 		    logger.info("requestAreaInfo");
 		    j.setResult(areaService.queryAllArea());
