@@ -68,6 +68,5 @@
 			alert('failed'+this.getStatus());
 		}        
 	},{enableHighAccuracy: true});
-	
 </script>
 
